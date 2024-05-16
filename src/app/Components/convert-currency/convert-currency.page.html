@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ConvertCurrency</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ConvertCurrency</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+
+<!-- TODO                       MY CODE -->
+<ion-content>
+  <ion-toolbar>
+    <ion-input
+      type="number"
+      min="1"
+      label="Mounth"
+      labelPlacement="floating"
+      placeholder="Mounth"
+      required
+      [(ngModel)]="UseToConvert.value"
+      [ngModelOptions]="{ standalone: true }"
+    ></ion-input>
+
+    <ion-select
+      [(ngModel)]="UseToConvert.from"
+      [ngModelOptions]="{ standalone: true }"
+      label="Choose the currency"
+      label-placement="stacked"
+    >
+      @for (di of divisas; track $index) {
+      <ion-select-option [value]="di"
+        >{{di.name}} : {{di.value}}DOP</ion-select-option
+      >
+      }
+    </ion-select>
+
+    <ion-button fill="outline" color="warning" (click)="convert()"
+      >Convert</ion-button
+    >
+
+    <ion-title>RESULT : {{Result |number :'.1-2'}}</ion-title>
+  </ion-toolbar>
+</ion-content>
+
