@@ -13,16 +13,13 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'error',
+    redirectTo: 'main',
     pathMatch: 'full',
   },
+  /* !          SOLO CON OBJETIVOS DE PRUEBAS :) */
   {
     path: 'mood-offline',
-    loadComponent: () => import('./Components/mood-offline/mood-offline.page').then( m => m.MoodOfflinePage)
-  },
-  {
-    path: 'error',
-    loadComponent: () => import('./Components/error/error.page').then( m => m.ErrorPage)
+    loadComponent: () => import('./Components/mood-offline/mood-offline.page').then(m => m.MoodOfflinePage)
   },
 
 ];

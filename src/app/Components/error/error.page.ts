@@ -12,11 +12,7 @@ import { MyError } from '@Interfaces/interfaces';
   imports: [IonLabel, IonText, IonCardHeader, IonCardContent, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class ErrorPage {
- // @Input({ required: true }) error!: MyError;
-  @Input({ required: true }) error: MyError= {
-    title: 'Error Convert',
-    message: 'Error During the convertion of USD -> DOP',
-    fecha: new Date(Date.now())
-  };
+  @Input({ required: true }) error!: MyError;
+
   constructor() { }
 }
