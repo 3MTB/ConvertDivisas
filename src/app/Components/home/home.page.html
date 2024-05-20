@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title [color]="isOnline ? 'success':'danger'">
+      Convert : @if(isOnline){
+      <ion-img src="./../../../assets/cloud-done-outline.svg"></ion-img>
+      }<!-- @else {
+      <ion-img src="./../../../assets/cloud-offline-outline.svg"></ion-img>
+      } -->
+    </ion-title>
+    <ion-buttons slot="end">
+      <!--*                   BUTTON HISTORY    -->
+      <ion-button
+        (click)="ShowHistory = !ShowHistory"
+        class="ion-padding"
+        fill="clear"
+        size="small"
+        [disabled]="LongHistory===0"
+        [color]="ShowHistory ? 'medium' : 'dark'"
+      >
+        <ion-img src="./../../../assets/clipboard-outline.svg"></ion-img>
+        {{ShowHistory ? "Close":LongHistory > 0 ? 'Open' : 'Sin'}} History
+      </ion-button>
+      <!--*                   BUTTON About Currency    -->
+
+      <ion-button fill="clear" color="medium" [routerLink]="['/aboutCurrency']">
+        About Currency
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  @if(isOnline){
+  <app-mood-online (NewConvertion)="UpdateHistory()"></app-mood-online>
+  } @else {
+  <app-mood-offline (NewConvertion)="UpdateHistory()"></app-mood-offline>
+  }
+
+  <!-- *          HISTORIAL -->
+
+  @if(ShowHistory){
+  <app-history></app-history>
+  }
+  <!-- *          HISTORIAL -->
+</ion-content>
+<ion-footer class="ion-margin-right">
+  <ion-toolbar class="ion-padding">
+    @if(isOnline){
+    <ion-text color="dark"
+      >Tenemos un limite de 1500 conversiones con valores reales:(.
+      <ion-text color="danger"> No ABUSE </ion-text>
+      que aun no tengo manejo de errores.
+    </ion-text>
+    <br />
+    }@else {
+    <!-- <ion-img src="./../../../assets/cloud-offline-outline.svg"></ion-img> -->
+    <ion-note color="warning" class="ion-padding ion-margin">
+      ⚠️Se recuerda que estos datos no son OFICIALES, asi como que son datos
+      estaticos
+    </ion-note>
+    }
+    <br />
+    @if(isOnline){
+    <ion-img src="./../../../assets/logo-github.svg"></ion-img>
+    }
+    <a target="_blank" href="https://github.com/3MTB/ConvertDivisas">
+      View Code [GITHUB]
+    </a>
+    <br />
+
+    By Eury
+  </ion-toolbar>
+</ion-footer>

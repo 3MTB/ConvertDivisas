@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 
 export interface ConversionResponse {
   result: string
@@ -13,8 +14,32 @@ export interface ConversionResponse {
   conversion_result: number
 }
 export interface Convert {
-  from: string,
-  to: string,
+  from: Currency,
+  to: Currency,
   amount: number
 }
 
+export interface Currency {
+  CurrencyCode: string;
+  CurrencyName: string;
+  Country: String;
+}
+
+
+export interface ResultConvert {
+  convert: Convert,
+  priceConverted: number,
+  result: number,
+  form: string,
+  date: Date,
+}
+
+export interface OffConvert {
+  fromOff: OffCurrency,
+  toOff: OffCurrency,
+  amountOff: number
+}
+export interface OffCurrency {
+  currency: Currency;
+  priceToDOP: number
+}

@@ -1,0 +1,85 @@
+
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar class="ion-padding">
+    <ion-input
+      fill="solid"
+      type="number"
+      min="0.1"
+      label="Mounth"
+      labelPlacement="floating"
+      placeholder="Mounth"
+      [(ngModel)]="convert.amount"
+      [ngModelOptions]="{standalone:true}"
+      (input)="convert.amount = convert.amount<=0 ? 0.1:convert.amount"
+    >
+    </ion-input>
+
+    <!-- !                    select currency FROM  -->
+    <ion-select
+      fill="solid"
+      [(ngModel)]="convert.from"
+      [ngModelOptions]="{standalone:true}"
+      label="From"
+      label-placement="floating"
+      color="warning"
+    >
+      @for (cur of allCurrencys; track $index) {
+      <ion-select-option [value]="cur">
+        {{cur.CurrencyCode}}
+        <ion-label> : {{cur.CurrencyName}} </ion-label>
+      </ion-select-option>
+      }
+    </ion-select>
+    <!-- !                    select currency TO  -->
+
+    <ion-select
+      fill="solid"
+      [(ngModel)]="convert.to"
+      [ngModelOptions]="{standalone:true}"
+      label="To"
+      label-placement="floating"
+    >
+      @for (cur of allCurrencys; track $index) {
+      <ion-select-option [value]="cur">
+        {{cur.CurrencyCode}}
+        <ion-label> : {{cur.CurrencyName}} </ion-label>
+      </ion-select-option>
+      }@empty{
+      <h2>ERROR!: Sin Currencys registrada</h2>
+      }
+    </ion-select>
+
+    <ion-button
+      id="btn-Convert"
+      fill="outline"
+      color="warning"
+      (click)="getResult()"
+      [disabled]="!isOnline"
+      >Convert</ion-button
+    >
+    <ion-toast
+      color="warning"
+      position="top"
+      positionAnchor="header"
+      trigger="btn-Convert"
+  icon="chatbox-ellipses-outline"
+
+      message="Result : {{ResultConvert.convert.amount}} {{ResultConvert.convert.from.CurrencyCode}} =
+    {{ResultConvert.result| number : '.1-3'}} {{ResultConvert.convert.to.CurrencyCode}}"
+      [duration]="7000"
+    >
+    </ion-toast>
+
+    @if(ResultConvert.result!==0){
+    <br />
+    <ion-text class="ion-padding"> Result </ion-text> <br />
+    <ion-text>
+      {{ResultConvert.convert.amount}}
+      {{ResultConvert.convert.from.CurrencyCode}} = {{ResultConvert.result |
+      number : '.1-3'}} {{ResultConvert.convert.to.CurrencyCode}}</ion-text
+    >
+    }
+  </ion-toolbar>
+</ion-content>
+<!-- ?                      FOOTER                 -->

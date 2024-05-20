@@ -1,0 +1,5 @@
+  ARREGLAR MODO OFFLINE - REHACER
+
+1- Verificar que el OFFLINE NO ESTA GUARDANDO
+2 - interceptor
+3 - Manejo de errores provenientes el api

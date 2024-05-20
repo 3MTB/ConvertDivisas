@@ -1,0 +1,65 @@
+<ion-header [translucent]="true" class="center">
+  <ion-toolbar class="ion-padding ion-center">
+    <ion-title>
+      <ion-img src="./../../../assets/clipboard-outline.svg"></ion-img>
+      History</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">History</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+ -->
+@if(AllHistory.length >0){ } @for (c of AllHistory; track $index) {
+<!--      * header -->
+@if($first){
+<ion-row class="ion-padding">
+  <ion-col size="1.5">
+    <ion-label color="tertiary"> Amount</ion-label>
+  </ion-col>
+  <ion-col size="1.5">From</ion-col>
+  <ion-col size="1.5">To</ion-col>
+  <ion-col size="1.5">
+    <ion-label color="tertiary">Result</ion-label>
+  </ion-col>
+  <ion-col size="1.5">Rate</ion-col>
+  <ion-col size="1.5">Mood</ion-col>
+  <ion-col size="1.5">DATE</ion-col>
+</ion-row>
+}
+<!--      * header -->
+
+<ion-row class="ion-padding">
+  <ion-col size="1.5">
+    <ion-label color="tertiary"> {{c.convert.amount}} </ion-label>
+  </ion-col>
+  <ion-col size="1.5">{{c.convert.from.CurrencyCode}} </ion-col>
+  <ion-col size="1.5">{{c.convert.to.CurrencyCode}}</ion-col>
+  <ion-col size="1.5"
+    ><ion-label color="tertiary"
+      >{{c.result | number : '.1-2'}}</ion-label
+    ></ion-col
+  >
+  <ion-col size="1.5">{{c.priceConverted | number : '.1-2'}}</ion-col>
+  <ion-col size="1.5">
+    <ion-label [color]="c.form.toLowerCase()==='offline'? 'danger':'success'">
+      {{c.form}}
+    </ion-label>
+  </ion-col>
+  <ion-col size="1.5">
+    <ion-label color="medium">
+      {{c.date | date : 'MMM d,y hh:mm:ss a'}}
+    </ion-label>
+  </ion-col>
+</ion-row>
+
+}@empty {
+<ion-title color="danger" class="ion-padding ion-margin">
+  Sin conversiones realizadas!
+</ion-title>
+}

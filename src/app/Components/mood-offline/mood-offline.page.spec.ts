@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MainPage } from './main.page';
+import { MoodOfflinePage } from './mood-offline.page';
 
-describe('MainPage', () => {
-  let component: MainPage;
-  let fixture: ComponentFixture<MainPage>;
+describe('MoodOfflinePage', () => {
+  let component: MoodOfflinePage;
+  let fixture: ComponentFixture<MoodOfflinePage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPage);
+    fixture = TestBed.createComponent(MoodOfflinePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

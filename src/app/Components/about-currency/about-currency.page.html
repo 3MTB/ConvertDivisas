@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-padding">
+    <ion-title>AboutCurrency</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/home']" color="medium">
+        <ion-icon src="../../../assets/home-outline.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  @for (cur of AllCurrency; track $index) {
+  <!-- !              ENCABEZADO -->
+  @if($first){
+  <ion-row class="ion-justify-content-around" id="header-Grid">
+    <ion-col size="2">
+      <ion-label color="warning">Currency Code</ion-label></ion-col
+    >
+    <ion-col size="3">
+      <ion-label color="warning">Currency Name</ion-label></ion-col
+    >
+    <ion-col size="2">
+      <ion-label color="warning">Currency Code</ion-label></ion-col
+    >
+  </ion-row>
+  }
+  <!-- !              ENCABEZADO -->
+
+  <ion-row
+    class="ion-justify-content-around ion-align-items-center"
+    color="danger"
+  >
+    <ion-col size="2">
+      <ion-label [color]="$even ?  'medium':'tertiary'"
+        >{{cur.CurrencyCode}}</ion-label
+      >
+    </ion-col>
+    <ion-col size="3">
+      <ion-label [color]="$even? 'medium':'tertiary'"
+        >{{cur.CurrencyName}}</ion-label
+      >
+    </ion-col>
+
+    <ion-col size="2">
+      <ion-label [color]="$index%2===0? 'medium':'tertiary'"
+        >{{cur.Country}}</ion-label
+      >
+    </ion-col>
+  </ion-row>
+  }
+</ion-content>
