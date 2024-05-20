@@ -1,6 +1,7 @@
-
-
 <ion-content [fullscreen]="true">
+  @if(error){
+  <app-error [error]="error"></app-error>
+  }
   <ion-toolbar class="ion-padding">
     <ion-input
       fill="solid"
@@ -63,8 +64,7 @@
       position="top"
       positionAnchor="header"
       trigger="btn-Convert"
-  icon="chatbox-ellipses-outline"
-
+      icon="chatbox-ellipses-outline"
       message="Result : {{ResultConvert.convert.amount}} {{ResultConvert.convert.from.CurrencyCode}} =
     {{ResultConvert.result| number : '.1-3'}} {{ResultConvert.convert.to.CurrencyCode}}"
       [duration]="7000"

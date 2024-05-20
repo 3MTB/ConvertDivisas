@@ -1,7 +1,12 @@
-import { provideHttpClient } from '@angular/common/http';
 
+export interface MyError {
+  title: string,
+  message: string,
+  date: Date
+}
 export interface ConversionResponse {
   result: string
+  error_type?: string
   documentation: string
   terms_of_use: string
   time_last_update_unix: number
@@ -13,6 +18,7 @@ export interface ConversionResponse {
   conversion_rate: number
   conversion_result: number
 }
+
 export interface Convert {
   from: Currency,
   to: Currency,
